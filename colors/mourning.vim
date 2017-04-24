@@ -101,7 +101,7 @@ call s:HL('VertSplit', s:c.black)
 call s:HL('Folded', s:c.orient) | hi Folded gui=italic
 
 for group in ['FoldColumn', 'SignColumn', 'LineNr']
-  call s:HL(group, s:c.mineshaft1, s:c.black)
+  call s:HL(group, s:c.mineshaft2, s:c.black)
 endfor
 call s:HL('CursorLineNr', 'fg', s:c.black)
 
