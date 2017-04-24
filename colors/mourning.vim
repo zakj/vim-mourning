@@ -100,8 +100,7 @@ call s:HL('ErrorMsg', s:c.white, s:c.red)
 call s:HL('VertSplit', s:c.black)
 call s:HL('Folded', s:c.orient) | hi Folded gui=italic
 
-call s:HL('StatusLine', s:c.white, s:c.black)
-for group in ['FoldColumn', 'SignColumn', 'LineNr', 'StatusLineNC']
+for group in ['FoldColumn', 'SignColumn', 'LineNr']
   call s:HL(group, s:c.mineshaft1, s:c.black)
 endfor
 call s:HL('CursorLineNr', 'fg', s:c.black)
@@ -132,7 +131,8 @@ call s:HL('SpecialKey', s:c.orient)
 " SpellRare	Word that is recognized by the spellchecker as one that is
 " 		hardly ever used. |spell|
 " 		This will be combined with the highlighting used otherwise.
-
+call s:HL('StatusLine', s:c.white, s:c.black)
+call s:HL('StatusLineNC', s:c.mineshaft2, s:c.black)
 call s:HL('TabLine', s:c.grey, s:c.black)
 call s:HL('TabLineFill', s:NULL, s:c.black)
 call s:HL('TabLineSel', s:c.white, s:c.mineshaft0, 'bold')
