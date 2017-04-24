@@ -98,7 +98,7 @@ call s:HL('DiffDelete', s:c.mineshaft0, s:c.black)
 call s:HL('DiffText', s:NULL, s:c.mineshaft2)
 call s:HL('ErrorMsg', s:c.white, s:c.red)
 call s:HL('VertSplit', s:c.black)
-call s:HL('Folded', s:c.orient)
+call s:HL('Folded', s:c.orient) | hi Folded gui=italic
 
 call s:HL('StatusLine', s:c.white, s:c.black)
 for group in ['FoldColumn', 'SignColumn', 'LineNr', 'StatusLineNC']
@@ -139,7 +139,7 @@ call s:HL('TabLineSel', s:c.white, s:c.mineshaft0, 'bold')
 call s:HL('Title', s:c.white, s:NULL, 'bold')
 call s:HL('Visual', s:c.black, s:c.malibu)
 call s:HL('WarningMsg', s:c.bittersweet)  " TODO: refine
-call s:HL('WildMenu', s:NULL, s:c.green_yellow)
+call s:HL('WildMenu', s:c.black, s:c.green_yellow)
 
 
 " Syntax highlighting.  {{{1
