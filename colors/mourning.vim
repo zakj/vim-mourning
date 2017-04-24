@@ -1,8 +1,9 @@
 " mourning colorscheme
 "
 " Maintainer:	Zak Johnson <me@zakj.net>
-" Last Change:	2017-04-20
+" Last Change:	2017-04-23
 " URL: https://github.com/zakj/mourning
+" nmap <leader><leader> :w<CR>:source $MYVIMRC<CR>
 
 " Setup.  {{{1
 set background=dark
@@ -17,15 +18,12 @@ let g:colors_name = 'mourning'
 " HL helper function.  {{{1
 let s:NULL = {'sentinel': 'until v:null support is universal'}
 function! s:HL(group, fg, ...)
-  let [l:fg, l:bg, l:style, l:guisp] = [a:fg, s:NULL, s:NULL, s:NULL]
+  let [l:fg, l:bg, l:style] = [a:fg, s:NULL, s:NULL]
   if a:0 >= 1
     unlet l:bg | let l:bg = a:1
   endif
   if a:0 >= 2
     unlet l:style | let l:style = a:2
-  endif
-  if a:0 >= 3
-    unlet l:guisp | let l:guisp = a:3
   endif
 
   let cmd = ['hi', a:group, 'NONE']
@@ -46,10 +44,6 @@ function! s:HL(group, fg, ...)
     let cmd += ['cterm=' . l:style, 'gui=' . l:style]
   endif
 
-  if type(l:guisp) == type('')
-    let cmd += ['guisp='. l:guisp]
-  endif
-
   execute join(cmd)
 endfunction
 
@@ -62,19 +56,26 @@ let s:c.mineshaft0 =   [234, '#1c1c1c']
 let s:c.mineshaft1 =   [235, '#262626']
 let s:c.mineshaft2 =   [237, '#3a3a3a']
 let s:c.boulder =      [240, '#585858']
+let s:c.dark_grey =    [242, '#6c6c6c']
 let s:c.grey =         [245, '#8a8a8a']
 let s:c.silver =       [250, '#bcbcbc']
 let s:c.white =        [254, '#e4e4e4']
 
 let s:c.orient =       [ 24, '#005f87']
-"XXX let s:c.deep_sea =     [ 29, '#00875f']
+let s:c.comet =        [ 60, '#5f5f87']
+let s:c.scampi =       [ 61, '#5f5faf']
+let s:c.juniper =      [ 66, '#5f8787']
 let s:c.malibu =       [ 75, '#5fafff']
 let s:c.bright_green = [ 84, '#5fff87']
+let s:c.maroon =       [ 88, '#870000']
+let s:c.wisteria =     [ 96, '#875f87']
+let s:c.wild_blue =    [103, '#8787af']
 let s:c.mint_green =   [121, '#87ffaf']
+let s:c.bright_red =   [124, '#af0000']
 let s:c.red =          [160, '#d70000']
 let s:c.green_yellow = [155, '#afff5f']
-
 let s:c.bittersweet =  [203, '#ff5f5f']
+
 
 
 " General VIM chrome.  {{{1
@@ -113,8 +114,8 @@ call s:HL('MatchParen', s:c.bright_green, s:NULL, 'bold')
 call s:HL('ModeMsg', s:NULL, s:NULL, 'bold')
 call s:HL('MoreMsg', s:c.white, s:NULL, 'bold')
 call s:HL('NonText', s:c.orient)
-call s:HL('Pmenu', s:c.black, s:c.grey)  " TODO: orig 235/242
-call s:HL('PmenuSel', s:c.white, s:c.orient)  " TODO: orig 0/25
+call s:HL('Pmenu', s:c.black, s:c.grey)
+call s:HL('PmenuSel', s:c.white, s:c.orient)
 call s:HL('PmenuSbar', s:NULL, s:c.silver)
 call s:HL('PmenuThumb', s:NULL, s:c.white)
 call s:HL('Question', s:c.mint_green, s:NULL, 'bold')
@@ -143,3 +144,21 @@ call s:HL('WildMenu', s:NULL, s:c.green_yellow)
 
 " Syntax highlighting.  {{{1
 " :help group-name
+
+call s:HL('Comment', s:c.boulder, s:NULL) | hi Comment gui=italic
+call s:HL('Constant', s:c.maroon)
+call s:HL('Identifier', s:c.wisteria)
+call s:HL('Statement', s:c.grey, s:NULL, 'bold')
+call s:HL('Operator', s:c.dark_grey)
+call s:HL('PreProc', s:c.scampi)
+call s:HL('Type', s:c.comet)
+call s:HL('Special', s:c.juniper)
+call s:HL('Underlined', s:NULL, s:NULL, 'underline')
+call s:HL('Ignore', s:c.black)
+call s:HL('Error', s:c.black, s:c.bright_red, 'bold')
+call s:HL('Todo', s:c.black, s:c.wild_blue, 'bold')
+
+
+" Specific syntax overrides.   {{{1
+
+hi link jsGlobalObjects Identifier
