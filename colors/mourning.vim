@@ -1,9 +1,7 @@
 " mourning colorscheme
 "
-" Maintainer:	Zak Johnson <me@zakj.net>
-" Last Change:	2017-04-23
-" URL: https://github.com/zakj/mourning
-" nmap <leader><leader> :w<CR>:source $MYVIMRC<CR>
+" Maintainer: Zak Johnson <me@zakj.net>
+" URL: https://github.com/zakj/vim-mourning
 
 " Setup.  {{{1
 set background=dark
@@ -97,10 +95,9 @@ call s:HL('DiffChange', s:NULL, s:c.mineshaft1)
 call s:HL('DiffDelete', s:c.mineshaft0, s:c.black)
 call s:HL('DiffText', s:NULL, s:c.mineshaft2)
 call s:HL('ErrorMsg', s:c.white, s:c.red)
-call s:HL('VertSplit', s:c.black)
 call s:HL('Folded', s:c.orient) | hi Folded gui=italic
 
-for group in ['FoldColumn', 'SignColumn', 'LineNr']
+for group in ['FoldColumn', 'SignColumn', 'LineNr', 'VertSplit']
   call s:HL(group, s:c.mineshaft2, s:c.black)
 endfor
 call s:HL('CursorLineNr', 'fg', s:c.black)
