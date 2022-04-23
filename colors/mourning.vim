@@ -155,6 +155,8 @@ call s:HL('Ignore', s:c.black)
 call s:HL('Error', s:c.silver, s:c.bright_red, 'bold')
 call s:HL('Todo', s:c.black, s:c.wild_blue, 'bold')
 
+call s:HL('diffRemoved', s:c.bright_red)
+call s:HL('diffAdded', s:c.mint_green)
 
 " Specific syntax overrides.   {{{1
 
